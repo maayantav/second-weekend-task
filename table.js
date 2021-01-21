@@ -84,3 +84,13 @@ for(let lesson of school)
     workTime = hWork + ":" + mWork;
     lesson.totalTime = workTime;
 }
+
+document.write('<table>');
+for(let lesson of school)
+{
+    let sTime = lesson.startedTime.getHours() + ":" + lesson.startedTime.getMinutes();
+    let eTime = lesson.endTime.getHours() + ":" + lesson.endTime.getMinutes();
+    document.write(`<tr><th>${lesson.topic}</th><th>${lesson.tasksGiven}</th><th>${lesson.tasksFinished}</th><th>${lesson.tasksFinishedPrecent}</th><th>${sTime}</th><th>${eTime}</th><th>${lesson.totalTime}</th></tr>`);
+}
+document.write('</table>');
+
