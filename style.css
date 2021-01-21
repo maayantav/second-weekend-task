@@ -1,0 +1,30 @@
+.classesTable {
+  background-color: black;
+  color: wheat;
+}
+.headTable {
+  background-color: rgb(141, 13, 13);
+  color: wheat;
+}
+.topic {
+  background-color: rgb(63, 5, 5);
+  color: wheat;
+}
+.fRed {
+  background-color: rgb(199, 46, 46);
+}
+.fYellow {
+  background-color: yellow;
+}
+.fGreen {
+  background-color: rgb(57, 196, 57);
+}
+.fPink {
+  background-color: rgb(155, 87, 211);
+}
+.fWhite {
+  background-color: rgb(186, 142, 228);
+}
+.fPurple {
+  background-color: rgb(146, 60, 146);
+}
