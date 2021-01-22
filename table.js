@@ -8,7 +8,7 @@ let school = [
     },
     {
         topic: "History",
-        startedTime: new Date(2021, 01, 13, 17, 30),
+        startedTime: new Date(2021, 01, 13, 15, 30),
         endTime:  new Date(2021, 01, 13, 18, 45),
         tasksGiven: 9,
         tasksFinished: 8
@@ -74,7 +74,7 @@ let school = [
 for(let lesson of school)
 {
     let percentFinished = lesson.tasksFinished/ lesson.tasksGiven* 100;
-    lesson.tasksFinishedPrecent = Math.floor(percentFinished) + "%";
+    lesson.tasksFinishedPrecent = Math.floor(percentFinished);
 
     //add the total time at work
     let workTime = lesson.endTime - lesson.startedTime;
@@ -85,12 +85,39 @@ for(let lesson of school)
     lesson.totalTime = workTime;
 }
 
-document.write('<table>');
+ document.write(`<table><tr><th class="headTable">Topic</th><th class="headTable">Tasks Given</th><th class="headTable">Tasks Finished</th><th class="headTable">Tasks Finished %</th><th class="headTable">Started Time</th><th class="headTable">End Time</th><th class="headTable">Total Time</th></tr>`);
+
 for(let lesson of school)
 {
+    let perFinishedClass, totTimeClass;
+    if(lesson.tasksFinishedPrecent < 50)
+    {
+        perFinishedClass = 'fRed';
+    }
+    else if(lesson.tasksFinishedPrecent >= 50 && lesson.tasksFinishedPrecent < 80)
+    {
+        perFinishedClass = 'fYellow';
+    }
+    else if(lesson.tasksFinishedPrecent >= 80)
+    {
+        perFinishedClass = 'fGreen';
+    }
+
+    if(lesson.totalTime[0] <= 2)
+    {
+        totTimeClass = 'fPurple';
+    }
+    else if(lesson.totalTime[0] > 2 && lesson.totalTime[0] <= 4)
+    {
+        totTimeClass = 'fPink';
+    }
+    else if(lesson.totalTime[0] >= 4)
+    {
+        totTimeClass = 'fWhite';
+    }
     let sTime = lesson.startedTime.getHours() + ":" + lesson.startedTime.getMinutes();
     let eTime = lesson.endTime.getHours() + ":" + lesson.endTime.getMinutes();
-    document.write(`<tr><th>${lesson.topic}</th><th>${lesson.tasksGiven}</th><th>${lesson.tasksFinished}</th><th>${lesson.tasksFinishedPrecent}</th><th>${sTime}</th><th>${eTime}</th><th>${lesson.totalTime}</th></tr>`);
+
+    document.write(`<tr><th class="topic">${lesson.topic}</th><th class="classesTable">${lesson.tasksGiven}</th><th class="classesTable">${lesson.tasksFinished}</th><th class="${perFinishedClass}">${lesson.tasksFinishedPrecent + "%"}</th><th class="classesTable">${sTime}</th><th class="classesTable">${eTime}</th><th class="${totTimeClass}">${lesson.totalTime}</th></tr>`);
 }
 document.write('</table>');
-
